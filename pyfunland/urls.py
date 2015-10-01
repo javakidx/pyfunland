@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from pyfunland.views import here
+from pyfunland.views import add
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^here/$', here)
+    url(r'^here/$', here),
+    url(r'^(\d{1,2})/plus/(\d{1,2})/$', add)
 ]
