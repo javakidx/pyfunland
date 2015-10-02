@@ -27,5 +27,21 @@ def math(request, a, b):
 
 	###return HttpResponse(t.render(c))
 	####return render_to_response('math.html', {'s' : s, 'd' : d, 'p' : p, 'q' : q});
-	return render_to_response('math.html', locals());
+	return render_to_response('math.html', locals())
 
+
+def menu(request):
+	foods = [{
+			'name' : '蕃茄炒蛋',
+			'price' : 60,
+			'comment' : '好吃',
+			'is_spicy' : False
+		},
+		{
+			'name' : '蒜泥白肉',
+			'price' : 100,
+			'comment' : '人氣推薦',
+			'is_spicy' : True
+		}
+	]
+	return render_to_response('menu.html', locals())
