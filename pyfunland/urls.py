@@ -19,7 +19,7 @@ from pyfunland.views import here
 from pyfunland.views import add
 from pyfunland.views import math
 
-from pyfunland.views import menu
+from restaurants.views import menu
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
