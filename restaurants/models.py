@@ -19,5 +19,5 @@ class Food(models.Model):
 	def __unicode__(self):
 		return self.name
 
-    class Meta:
-        ordering = ['price']
+#    class Meta:
+#        ordering = ['price']
