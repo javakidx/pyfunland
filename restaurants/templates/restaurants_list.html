@@ -9,17 +9,25 @@
 	<table>
 		<thead>
 			<tr>
+				<th>選取</th>
 				<th>店名</th>
 				<th>電話</th>
 				<th>地址</th>
+				<th>評價</th>
 			</tr>
 		</thead>
 		<tbody>
         {% for r in restaurants %}
 			<tr>
+				<td>
+					<input type="radio" name="id" value="{{ r.name }}">
+				</td>
 				<td>{{ r.name }}</td>
 				<td>{{ r.phone_number }}</td>
 				<td>{{ r.address }}</td>
+				<td>
+					<a href="/comment/{{r.id}}/">評論</a>
+				</td>
 			</tr>
         {% endfor %}
 		</tbody>
