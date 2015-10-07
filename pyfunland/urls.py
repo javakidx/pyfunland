@@ -20,7 +20,7 @@ from pyfunland.views import add
 from pyfunland.views import math
 from pyfunland.views import welcome
 
-from restaurants.views import menu, list_restaurants
+from restaurants.views import menu, list_restaurants, comment
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -30,5 +30,6 @@ urlpatterns = [
 
     url(r'^menu/$', menu),
     url(r'^welcome/$', welcome),
-    url(r'^restaurants_list/$', list_restaurants)
+    url(r'^restaurants_list/$', list_restaurants),
+    url(r'^comment/(\d{1,5})/$', comment),
 ]
