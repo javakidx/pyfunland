@@ -22,38 +22,37 @@
             </div>
         </nav>
         <div class="container">
-            <div class="menus">
-                {% for r in restaurants %}
+            <div class="menu">
+				<h2>{{restaurant.name}}的菜單</h2>
                     <h2>{{ r.name }}</h2>
-                    {% if r.food_set.all %}
-                        <p>本餐廳共有{{r.food_set.all|length}}道菜</p>
-                        <table class="table">
-                            <!--h3>第{{forloop.counter}}道食物</h3-->
-                            <tr>
-                                <th>菜名</th>
-                                <th>價格</th>
-                                <th>辣不辣</th>
-                                <th>註解</th>
-                            </tr>
-                        {% for food in r.food_set.all %}
-                            <tr>
-                                <td>{{food.name}}</td>
-                                <td>{{food.price}}</td>
-                                <td>
-                                    {% if food.is_spicy %}
-                                        會
-                                    {% else %}
-                                        不會
-                                    {% endif %}
-                                </td>
-                                <td>{{food.comment}}</td>
-                            </tr>
-                        {% endfor%}
-                        </table>
-                    {% else %}
-                        <p>本餐廳什麼都沒賣！</p>
-                    {% endif %}
-                {% endfor %}
+				{% if restaurant.food_set.all %}
+					<p>本餐廳共有{{restaurant.food_set.all|length}}道菜</p>
+					<table class="table">
+						<!--h3>第{{forloop.counter}}道食物</h3-->
+						<tr>
+							<th>菜名</th>
+							<th>價格</th>
+							<th>辣不辣</th>
+							<th>註解</th>
+						</tr>
+					{% for food in restaurant.food_set.all %}
+						<tr>
+							<td>{{food.name}}</td>
+							<td>{{food.price}}</td>
+							<td>
+								{% if food.is_spicy %}
+									辣
+								{% else %}
+									不辣
+								{% endif %}
+							</td>
+							<td>{{food.comment}}</td>
+						</tr>
+					{% endfor%}
+					</table>
+				{% else %}
+					<p>本餐廳什麼都沒賣！</p>
+				{% endif %}
             </div>
         </div>
         <script type="text/javascript" src="{% static "js/jquery-1.11.3.min.js" %}"></script>
