@@ -18,5 +18,5 @@ def list_restaurants(request):
 	restaurants = Restaurant.objects.all()
 	return render_to_response('restaurants_list.html', locals())
 
-def comment(request):
+def comment(request, id):
 	return render_to_response('comment.html', locals())
