@@ -58,3 +58,6 @@ target/
 
 #pyc
 *.pyc
+
+#others
+.idea/
