@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 ##from django.shortcuts import render
 from django.shortcuts import render_to_response
-from restaurants.models import Restaurant, Food
+from django.http import HttpResponseRedirect
+from django.template import RequestContext
+from restaurants.models import Restaurant, Food, Comment
+from django.utils import timezone
 # Create your views here.
 
 def menu(request):
@@ -19,4 +22,23 @@ def list_restaurants(request):
 	return render_to_response('restaurants_list.html', locals())
 
 def comment(request, id):
-	return render_to_response('comment.html', locals())
+	if id:
+		r = Restaurant.objects.get(id=id)
+	else:
+		return HttpResponseRedirect('/restaurants_list/')
+
+	if request.POST:
+		visitor = request.POST['visitor']
+		content = request.POST['content']
+		email = request.POST['email']
+		date_time = timezone.localtime(timezone.now())
+		
+		Comment.objects.create(
+			visitor = visitor,
+			content = content,
+			email = email,
+			date_time = date_time,
+			restaurant = r
+		)
+	return render_to_response('comments.html', RequestContext(request, locals()))
+
