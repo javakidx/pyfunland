@@ -42,6 +42,8 @@ INSTALLED_APPS = (
 	'restaurants'
 )
 
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',

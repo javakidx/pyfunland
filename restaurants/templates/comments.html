@@ -44,27 +44,55 @@
         {% else %}
         <p>無評價</p>
         {% endif %}
-
         <br /><br />
-        {% if form.errors %}
+        {% if error %}
+                <p style="color:red;">* 表單輸入不完整, 請重新輸入</p>
+        {% endif %}
+        {% for e in errors %}
+                <p style="color:red;">{{ e }}</p>
+        {% endfor %}
+        {% if f.errors %}
         <p style="color:red;">
             請依提示修復表單錯誤
         </p>
         {% endif %}
 
-        <form action="" method="post" class="form-horizontal" role="form" style="width:33%; margin:auto; text-align:left">{% csrf_token %}
-            <div class="form-group">
+        <form action="" method="post" class="form-horizontal" role="form" style="width:45%; margin:auto; text-align:left">{% csrf_token %}
+           <!-- <div class="form-group">
 	            <label for="visitor">留言者:</label>
-				<input id="visitor" type="text" name="visitor">
+				<input id="visitor" type="text" name="visitor" value="{{visitor}}">
             </div>
             <div class="form-group">
                 <label for="email">電子信箱:</label>
-				<input id="email" type="text" name="email">
+				<input id="email" type="text" name="email" value="{{email}}">
             </div>
             <div class="form-group">
             <label for="content">評價:</label>
-				<textarea id="content" rows="10" cols="48" name="content"></textarea>
-            </div>
+				<textarea id="content" rows="10" cols="48" name="content" placeholder="conent">{{content}}</textarea>
+            </div>-->
+            <table>
+				<tr>
+					<th>
+						<label for="id_visitor">留言者：</label>
+					</th>
+					<td>{{ f.visitor }}</td>
+					<td>{{ f.visitor.errors }}</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="id_email">電子郵件：</label>
+					</th>
+					<td>{{ f.email }}</td>
+					<td>{{ f.email.errors }}</td>
+				</tr>
+				<tr>
+					<th>
+						<label for="id_content">評價：</label>
+					</th>
+					<td>{{ f.content }}</td>
+					<td>{{ f.content.errors }}</td>
+				</tr>
+            </table>
             <input type="submit" value="給予評價" class="btn btn-default">
         </form>
         </div>
